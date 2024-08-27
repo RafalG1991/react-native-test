@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
-import {log} from "expo/build/devtools/logger";
 
 export default function App() {
   return (
