@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import {log} from "expo/build/devtools/logger";
 
 export default function App() {
   return (
@@ -10,11 +11,13 @@ export default function App() {
         <Text>Hi! Press me!</Text>
       </Pressable>
       <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
+        style={{
+          flex: 1,
+        }}
+        onChangeText={() => null}
+        value='0'
         placeholder="useless placeholder"
-        keyboardType="numeric"
+        inputMode="numeric"
       />
     </View>
   );
