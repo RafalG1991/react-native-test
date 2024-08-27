@@ -9,6 +9,13 @@ export default function App() {
       <Pressable onPress={() => alert('Pressed on pressable component!')}>
         <Text>Hi! Press me!</Text>
       </Pressable>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeNumber}
+        value={number}
+        placeholder="useless placeholder"
+        keyboardType="numeric"
+      />
     </View>
   );
 }
