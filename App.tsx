@@ -1,24 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello world!</Text>
-      <StatusBar style="auto" />
-      <Pressable onPress={() => alert('Pressed on pressable component!')}>
-        <Text>Hi! Press me!</Text>
-      </Pressable>
-      <TextInput
-        style={{
-          flex: 1,
-        }}
-        onChangeText={() => null}
-        value='0'
-        placeholder="useless placeholder"
-        inputMode="numeric"
-      />
-    </View>
+    <SafeAreaProvider>
+      <StatusBar />
+      <SafeAreaView></SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
