@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
 
 export default function App() {
@@ -11,11 +11,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const styles = StyleSheet.create({});
