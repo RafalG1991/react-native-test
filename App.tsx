@@ -6,12 +6,17 @@ import {Dashboard} from "./src/screens/Dashboard";
 export default function App() {
   return (
     <SafeAreaProvider>
-      <StatusBar />
-      <SafeAreaView>
+      <StatusBar style={"light"}/>
+      <SafeAreaView style={styles.container}>
         <Dashboard />
       </SafeAreaView>
     </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#03b1fc',
+  },
+});
