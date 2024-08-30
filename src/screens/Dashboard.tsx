@@ -7,6 +7,7 @@ export const Dashboard = () => {
       <Text style={styles.cityName}>Warszawa</Text>
       <Text style={styles.temperature}>22° C</Text>
       <Feather name="sun" size={100} color="#fcd303" />
+      <Text style={styles.weather}>Sunny</Text>
     </View>
   );
 }
@@ -23,5 +24,8 @@ const styles = StyleSheet.create({
     fontSize: 50,
     color: "white",
   },
-
+  weather: {
+    fontSize: 26,
+    color: "white",
+  },
 });
