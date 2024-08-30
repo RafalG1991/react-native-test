@@ -7,7 +7,7 @@ export const Dashboard = () => {
     <View style={styles.container}>
       <Text style={styles.cityName}>Warszawa</Text>
       <Text style={styles.temperature}>22° C</Text>
-      <View>
+      <View style={styles.weatherContainer}>
         <Feather name="sun" size={100} color={COLORS.sun} />
         <Text style={styles.weather}>Sunny</Text>
       </View>
@@ -17,6 +17,9 @@ export const Dashboard = () => {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+  },
+  weatherContainer: {
     alignItems: 'center',
   },
   cityName: {
