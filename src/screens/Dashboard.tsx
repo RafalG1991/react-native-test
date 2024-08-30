@@ -20,10 +20,13 @@ const styles = StyleSheet.create({
   cityName: {
     fontSize: 30,
     color: COLORS.text,
+    marginTop: 20,
   },
   temperature: {
-    fontSize: 50,
+    fontSize: 72,
+    fontWeight: '600',
     color: COLORS.text,
+    marginTop: 20,
   },
   weather: {
     fontSize: 26,
