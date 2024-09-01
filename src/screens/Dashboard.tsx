@@ -2,6 +2,24 @@ import {StyleSheet, View, Text} from "react-native";
 import Feather from '@expo/vector-icons/Feather';
 import {COLORS} from "../themes/colors";
 
+const FOLLOWING_DAYS = [
+  {
+    name: 'dzisiaj',
+    value: 20,
+    type: 'sun',
+  },
+  {
+    name: 'wtorek',
+    value: 25,
+    type: 'sun',
+  },
+  {
+    name: 'środa',
+    value: 23,
+    type: 'sun',
+  },
+];
+
 export const Dashboard = () => {
   return (
     <View style={styles.container}>
@@ -11,6 +29,7 @@ export const Dashboard = () => {
         <Feather name="sun" size={100} color={COLORS.sun} />
         <Text style={styles.weather}>Sunny</Text>
       </View>
+
     </View>
   );
 }
