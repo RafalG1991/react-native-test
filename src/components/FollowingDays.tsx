@@ -1,9 +1,18 @@
 import {StyleSheet, Text, View} from "react-native";
+import {COLORS} from "../themes/colors";
+import Feather from "@expo/vector-icons/Feather";
+import {FollowingWeatherType} from "../utils/types";
 
-export const FollowingDays = () => {
+type Props = {
+  item: FollowingWeatherType,
+}
+
+export const FollowingDays = ({item}: Props) => {
   return (
     <View>
-      <Text>Day</Text>
+      <Text>{item.name}</Text>
+      <Text>{item.value}</Text>
+      <Feather name={item.type} size={50} color={COLORS.sun} />
     </View>
   );
 }
