@@ -1,8 +1,10 @@
 import {StyleSheet, View, Text} from "react-native";
 import Feather from '@expo/vector-icons/Feather';
 import {COLORS} from "../themes/colors";
+import {FollowingWeatherType} from "../utils/types";
+import {FollowingDays} from "../components/FollowingDays";
 
-const FOLLOWING_DAYS = [
+const FOLLOWING_DAYS: FollowingWeatherType[] = [
   {
     name: 'dzisiaj',
     value: 20,
@@ -29,6 +31,9 @@ export const Dashboard = () => {
         <Feather name="sun" size={100} color={COLORS.sun} />
         <Text style={styles.weather}>Sunny</Text>
       </View>
+      {FOLLOWING_DAYS.map(item => (
+        <FollowingDays item={item}/>
+      ))}
 
     </View>
   );
