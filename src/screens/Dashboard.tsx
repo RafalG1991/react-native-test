@@ -5,35 +5,12 @@ import {FollowingDays} from "../components/FollowingDays";
 import {useWeatherApiCurrent} from "../../services/useWeatherApiCurrent";
 import {useWeatherApiForecast} from "../../services/useWeatherApiForecast";
 
-const FOLLOWING_DAYS: FollowingWeatherType[] = [
-  {
-    name: 'dzisiaj',
-    value: 20,
-    type: 'sun',
-  },
-  {
-    name: 'wtorek',
-    value: 25,
-    type: 'sun',
-  },
-  {
-    name: 'środa',
-    value: 23,
-    type: 'sun',
-  },
-  {
-    name: 'czwartek',
-    value: 18,
-    type: 'sun',
-  },
-];
-
 export const Dashboard = () => {
   const current = useWeatherApiCurrent();
   const forecast = useWeatherApiForecast();
-  console.log(forecast);
 
-  if(!current) return <ActivityIndicator color={COLORS.sun} size="large" style={{height: '100%'}}/>
+  if(!current || !forecast) return <ActivityIndicator color={COLORS.sun} size="large" style={{height: '100%'}}/>
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -50,8 +27,8 @@ export const Dashboard = () => {
           <Text style={styles.weather}>{current.current.condition.text}</Text>
         </View>
         <View style={styles.followingDaysContainer}>
-          {FOLLOWING_DAYS.map((item, index) => (
-            <FollowingDays isLast={index === FOLLOWING_DAYS.length-1} key={item.name} item={item}/>
+          {forecast.map((item, index) => (
+            <FollowingDays isLast={index === forecast.length-1} key={item.date} item={item}/>
           ))}
         </View>
       </View>
