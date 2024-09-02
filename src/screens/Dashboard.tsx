@@ -38,8 +38,8 @@ export const Dashboard = () => {
           <Text style={styles.weather}>Sunny</Text>
         </View>
         <View style={styles.followingDaysContainer}>
-          {FOLLOWING_DAYS.map(item => (
-            <FollowingDays key={item.name} item={item}/>
+          {FOLLOWING_DAYS.map((item, index) => (
+            <FollowingDays isLast={index === FOLLOWING_DAYS.length-1} key={item.name} item={item}/>
           ))}
         </View>
       </View>
