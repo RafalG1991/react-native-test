@@ -3,6 +3,7 @@ import Feather from '@expo/vector-icons/Feather';
 import {COLORS} from "../themes/colors";
 import {FollowingWeatherType} from "../utils/types";
 import {FollowingDays} from "../components/FollowingDays";
+import {useEffect} from "react";
 
 const FOLLOWING_DAYS: FollowingWeatherType[] = [
   {
@@ -28,6 +29,12 @@ const FOLLOWING_DAYS: FollowingWeatherType[] = [
 ];
 
 export const Dashboard = () => {
+  useEffect(() => {
+    fetch(`${process.env.EXPO_PUBLIC_API_URL}/current.json?key=${process.env.EXPO_PUBLIC_KEY}&q=Czestochowa`)
+      .then(res => res.json())
+      .then(res => console.log(res));
+  }, []);
+
   return (
     <ScrollView>
       <View style={styles.container}>
