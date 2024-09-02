@@ -1,9 +1,9 @@
-import {StyleSheet, View, Text, ScrollView, ActivityIndicator} from "react-native";
-import Feather from '@expo/vector-icons/Feather';
+import {StyleSheet, View, Text, ScrollView, ActivityIndicator, Image} from "react-native";
 import {COLORS} from "../themes/colors";
 import {FollowingWeatherType} from "../utils/types";
 import {FollowingDays} from "../components/FollowingDays";
-import {useApi} from "../../services/useApi";
+import {useWeatherApiCurrent} from "../../services/useWeatherApiCurrent";
+import {useWeatherApiForecast} from "../../services/useWeatherApiForecast";
 
 const FOLLOWING_DAYS: FollowingWeatherType[] = [
   {
@@ -29,18 +29,25 @@ const FOLLOWING_DAYS: FollowingWeatherType[] = [
 ];
 
 export const Dashboard = () => {
-  const current = useApi();
+  const current = useWeatherApiCurrent();
+  const forecast = useWeatherApiForecast();
+  console.log(forecast);
 
   if(!current) return <ActivityIndicator color={COLORS.sun} size="large" style={{height: '100%'}}/>
-
-    return (
+  return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.cityName}>{current.location.name}</Text>
         <Text style={styles.temperature}>{current.current.temp_c}°C</Text>
         <View style={styles.weatherContainer}>
-          <Feather name="sun" size={100} color={COLORS.sun} />
-          <Text style={styles.weather}>Sunny</Text>
+          <Image
+            style={styles.weatherIcon}
+            source={{uri: `http:${current.current.condition.icon}`,}}
+            resizeMode="contain"
+            width={128}
+            height={128}
+          />
+          <Text style={styles.weather}>{current.current.condition.text}</Text>
         </View>
         <View style={styles.followingDaysContainer}>
           {FOLLOWING_DAYS.map((item, index) => (
@@ -59,6 +66,10 @@ const styles = StyleSheet.create({
   weatherContainer: {
     alignItems: 'center',
     marginTop: 20,
+  },
+  weatherIcon: {
+    width: 128,
+    height: 128,
   },
   cityName: {
     fontSize: 30,
