@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-export const useApi = () => {
+export const useWeatherApiCurrent = () => {
   const [current, setCurrent] = useState<any>(null);
 
   useEffect(() => {
