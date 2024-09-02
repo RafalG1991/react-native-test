@@ -1,6 +1,5 @@
-import {StyleSheet, Text, View} from "react-native";
+import {Image, StyleSheet, Text, View} from "react-native";
 import {COLORS} from "../themes/colors";
-import Feather from "@expo/vector-icons/Feather";
 import {FollowingWeatherType} from "../utils/types";
 
 type Props = {
@@ -8,12 +7,20 @@ type Props = {
   isLast: boolean,
 }
 
+const DAYS_OF_WEEK = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"];
+
 export const FollowingDays = ({item, isLast}: Props) => {
   return (
     <View style={[styles.container, !isLast && styles.separator]}>
-      <Text style={styles.content}>{item.name}</Text>
-      <Text style={[styles.content, styles.value]}>{item.value}</Text>
-      <Feather style={[styles.content, styles.type]} name={item.type} size={50} />
+      <Text style={styles.content}>{DAYS_OF_WEEK[new Date(item.date).getDay()]}</Text>
+      <Text style={[styles.content, styles.value]}>{item.day.avgtemp_c}</Text>
+      <Image
+        style={styles.weatherIcon}
+        source={{uri: `http:${item.day.condition.icon}`,}}
+        resizeMode="contain"
+        width={64}
+        height={64}
+      />
     </View>
   );
 }
@@ -40,5 +47,9 @@ const styles = StyleSheet.create({
   type: {
     textAlign: "right",
     color: COLORS.sun,
+  },
+  weatherIcon: {
+    width: 64,
+    height: 64,
   },
 });
