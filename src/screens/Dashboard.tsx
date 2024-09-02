@@ -1,4 +1,4 @@
-import {StyleSheet, View, Text, ScrollView} from "react-native";
+import {StyleSheet, View, Text, ScrollView, ActivityIndicator} from "react-native";
 import Feather from '@expo/vector-icons/Feather';
 import {COLORS} from "../themes/colors";
 import {FollowingWeatherType} from "../utils/types";
@@ -37,7 +37,9 @@ export const Dashboard = () => {
       .then(res => setCurrent(res));
   }, []);
 
-  return (
+  if(!current) return <ActivityIndicator color={COLORS.sun} size="large" style={{height: '100%'}}/>
+
+    return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.cityName}>Warszawa</Text>
