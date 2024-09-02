@@ -20,6 +20,11 @@ const FOLLOWING_DAYS: FollowingWeatherType[] = [
     value: 23,
     type: 'sun',
   },
+  {
+    name: 'czwartek',
+    value: 18,
+    type: 'sun',
+  },
 ];
 
 export const Dashboard = () => {
@@ -31,7 +36,7 @@ export const Dashboard = () => {
         <Feather name="sun" size={100} color={COLORS.sun} />
         <Text style={styles.weather}>Sunny</Text>
       </View>
-      <View>
+      <View style={styles.followingDaysContainer}>
         {FOLLOWING_DAYS.map(item => (
           <FollowingDays item={item}/>
         ))}
@@ -46,6 +51,7 @@ const styles = StyleSheet.create({
   },
   weatherContainer: {
     alignItems: 'center',
+    marginTop: 20,
   },
   cityName: {
     fontSize: 30,
@@ -61,5 +67,14 @@ const styles = StyleSheet.create({
   weather: {
     fontSize: 26,
     color: COLORS.text,
+  },
+  followingDaysContainer: {
+    width: "90%",
+    margin: 20,
+    marginTop: 40,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: COLORS.lightBlue,
+    borderRadius: 10,
   },
 });
