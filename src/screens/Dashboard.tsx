@@ -1,6 +1,5 @@
 import {StyleSheet, View, Text, ScrollView, ActivityIndicator, Image} from "react-native";
 import {COLORS} from "../themes/colors";
-import {FollowingWeatherType} from "../utils/types";
 import {FollowingDays} from "../components/FollowingDays";
 import {useWeatherApiCurrent} from "../../services/useWeatherApiCurrent";
 import {useWeatherApiForecast} from "../../services/useWeatherApiForecast";
