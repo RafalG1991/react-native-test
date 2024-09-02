@@ -29,7 +29,7 @@ const FOLLOWING_DAYS: FollowingWeatherType[] = [
 ];
 
 export const Dashboard = () => {
-  const [current, setCurrent] = useState(null);
+  const [current, setCurrent] = useState<any>(null);
 
   useEffect(() => {
     fetch(`${process.env.EXPO_PUBLIC_API_URL}/current.json?key=${process.env.EXPO_PUBLIC_KEY}&q=Czestochowa`)
@@ -42,8 +42,8 @@ export const Dashboard = () => {
     return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.cityName}>Warszawa</Text>
-        <Text style={styles.temperature}>22° C</Text>
+        <Text style={styles.cityName}>{current.location.name}</Text>
+        <Text style={styles.temperature}>{current.current.temp_c}°C</Text>
         <View style={styles.weatherContainer}>
           <Feather name="sun" size={100} color={COLORS.sun} />
           <Text style={styles.weather}>Sunny</Text>
