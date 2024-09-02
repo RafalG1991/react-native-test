@@ -41,22 +41,20 @@ const styles = StyleSheet.create({
   },
   weatherContainer: {
     alignItems: 'center',
-    marginTop: 20,
   },
   weatherIcon: {
-    width: 128,
-    height: 128,
+    width: 100,
+    height: 100,
   },
   cityName: {
     fontSize: 30,
     color: COLORS.text,
-    marginTop: 20,
   },
   temperature: {
     fontSize: 72,
     fontWeight: '600',
     color: COLORS.text,
-    marginTop: 20,
+    marginTop: 10,
   },
   weather: {
     fontSize: 26,
@@ -65,7 +63,6 @@ const styles = StyleSheet.create({
   followingDaysContainer: {
     width: "90%",
     margin: 20,
-    marginTop: 40,
     paddingHorizontal: 20,
     paddingVertical: 10,
     backgroundColor: COLORS.lightBlue,

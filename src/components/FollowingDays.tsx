@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     color: COLORS.sun,
   },
   weatherIcon: {
-    width: 64,
-    height: 64,
+    width: 60,
+    height: 60,
   },
 });
