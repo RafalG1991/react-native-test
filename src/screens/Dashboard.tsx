@@ -3,7 +3,7 @@ import Feather from '@expo/vector-icons/Feather';
 import {COLORS} from "../themes/colors";
 import {FollowingWeatherType} from "../utils/types";
 import {FollowingDays} from "../components/FollowingDays";
-import {useEffect, useState} from "react";
+import {useApi} from "../../services/useApi";
 
 const FOLLOWING_DAYS: FollowingWeatherType[] = [
   {
@@ -29,13 +29,7 @@ const FOLLOWING_DAYS: FollowingWeatherType[] = [
 ];
 
 export const Dashboard = () => {
-  const [current, setCurrent] = useState<any>(null);
-
-  useEffect(() => {
-    fetch(`${process.env.EXPO_PUBLIC_API_URL}/current.json?key=${process.env.EXPO_PUBLIC_KEY}&q=Czestochowa`)
-      .then(res => res.json())
-      .then(res => setCurrent(res));
-  }, []);
+  const current = useApi();
 
   if(!current) return <ActivityIndicator color={COLORS.sun} size="large" style={{height: '100%'}}/>
 
