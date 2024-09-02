@@ -1,5 +1,23 @@
 export type FollowingWeatherType = {
-  name: string,
-  value: number,
-  type: any,
+  date: string,
+  day: {
+    avgtemp_c: number,
+    condition: {
+      icon: string,
+      text: string,
+    }
+  },
+};
+
+export type CurrentWeatherType = {
+  location: {
+    name: string,
+  },
+  current: {
+    temp_c: number,
+    condition: {
+      icon: string,
+      text: string,
+    }
+  }
 };
