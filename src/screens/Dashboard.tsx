@@ -31,10 +31,11 @@ export const Dashboard = () => {
         <Feather name="sun" size={100} color={COLORS.sun} />
         <Text style={styles.weather}>Sunny</Text>
       </View>
-      {FOLLOWING_DAYS.map(item => (
-        <FollowingDays item={item}/>
-      ))}
-
+      <View>
+        {FOLLOWING_DAYS.map(item => (
+          <FollowingDays item={item}/>
+        ))}
+      </View>
     </View>
   );
 }
