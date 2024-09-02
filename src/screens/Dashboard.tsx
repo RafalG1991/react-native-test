@@ -1,4 +1,4 @@
-import {StyleSheet, View, Text} from "react-native";
+import {StyleSheet, View, Text, ScrollView} from "react-native";
 import Feather from '@expo/vector-icons/Feather';
 import {COLORS} from "../themes/colors";
 import {FollowingWeatherType} from "../utils/types";
@@ -29,19 +29,21 @@ const FOLLOWING_DAYS: FollowingWeatherType[] = [
 
 export const Dashboard = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.cityName}>Warszawa</Text>
-      <Text style={styles.temperature}>22° C</Text>
-      <View style={styles.weatherContainer}>
-        <Feather name="sun" size={100} color={COLORS.sun} />
-        <Text style={styles.weather}>Sunny</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.cityName}>Warszawa</Text>
+        <Text style={styles.temperature}>22° C</Text>
+        <View style={styles.weatherContainer}>
+          <Feather name="sun" size={100} color={COLORS.sun} />
+          <Text style={styles.weather}>Sunny</Text>
+        </View>
+        <View style={styles.followingDaysContainer}>
+          {FOLLOWING_DAYS.map(item => (
+            <FollowingDays key={item.name} item={item}/>
+          ))}
+        </View>
       </View>
-      <View style={styles.followingDaysContainer}>
-        {FOLLOWING_DAYS.map(item => (
-          <FollowingDays item={item}/>
-        ))}
-      </View>
-    </View>
+    </ScrollView>
   );
 }
 
