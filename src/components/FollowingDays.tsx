@@ -16,7 +16,7 @@ export const FollowingDays = ({item, isLast}: Props) => {
   const {navigate} = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
-    <TouchableOpacity onPress={() => navigate("DayDetails")}>
+    <TouchableOpacity onPress={() => navigate("DayDetails", {forecast: item})}>
       <View style={[styles.container, !isLast && styles.separator]}>
         <Text style={styles.content}>{DAYS_OF_WEEK[new Date(item.date).getDay()]}</Text>
         <Text style={[styles.content, styles.value]}>{item.day.avgtemp_c}</Text>
