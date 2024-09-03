@@ -14,7 +14,7 @@ export const DayDetails = () => {
         <View style={styles.followingDaysContainer}>
           <Text style={[styles.content, styles.title]}>Pogoda w dniu {forecast[0].date}</Text>
           {day.map((item, index) => (
-            <View style={[styles.container, !(index === day.length-1) && styles.separator]}>
+            <View key={item.time} style={[styles.container, !(index === day.length-1) && styles.separator]}>
               <Text style={styles.content}>{item.time.split(' ')[1]}</Text>
               <Text style={[styles.content, styles.value]}>{item.temp_c}°C</Text>
               <Image
