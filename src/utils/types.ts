@@ -7,6 +7,15 @@ export type FollowingWeatherType = {
       text: string,
     }
   },
+  hour: {
+    chance_of_rain: number,
+    condition: {
+      icon: string,
+      text: string,
+    },
+    temp_c: number,
+    wind_kph: number,
+  }[],
 };
 
 export type CurrentWeatherType = {
