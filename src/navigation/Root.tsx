@@ -16,7 +16,7 @@ export const Root = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false,
+        // headerShown: false,
       }}>
       <Stack.Screen name="Dashboard" component={Dashboard}/>
       <Stack.Screen name="DayDetails" component={DayDetails} />
