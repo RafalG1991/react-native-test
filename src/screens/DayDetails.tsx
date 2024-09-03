@@ -1,18 +1,20 @@
-import {useWeatherApiForecast} from "../../services/useWeatherApiForecast";
 import {ActivityIndicator, Image, ScrollView, StyleSheet, Text, View} from "react-native";
 import {COLORS} from "../themes/colors";
+import {RouteProp, useRoute} from "@react-navigation/native";
+import {RootStackParamList} from "../navigation/Root";
 
 export const DayDetails = () => {
-  const forecast = useWeatherApiForecast();
+
+  const { params: {forecast} } = useRoute<RouteProp<RootStackParamList, "DayDetails">>();
 
   if(!forecast) return <ActivityIndicator color={COLORS.sun} size="large" style={{height: '100%'}}/>
 
-  const day = forecast[0].hour;
+  const day = forecast.hour;
 
   return (
     <ScrollView>
         <View style={styles.followingDaysContainer}>
-          <Text style={[styles.content, styles.title]}>Pogoda w dniu {forecast[0].date}</Text>
+          <Text style={[styles.content, styles.title]}>Pogoda w dniu {forecast.date}</Text>
           {day.map((item, index) => (
             <View key={item.time} style={[styles.container, !(index === day.length-1) && styles.separator]}>
               <Text style={styles.content}>{item.time.split(' ')[1]}</Text>
