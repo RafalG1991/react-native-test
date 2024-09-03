@@ -15,6 +15,7 @@ export type FollowingWeatherType = {
     },
     temp_c: number,
     wind_kph: number,
+    time: string,
   }[],
 };
 
