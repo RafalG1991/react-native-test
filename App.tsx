@@ -10,6 +10,7 @@ const myTheme: Theme = {
   colors: {
     ...DefaultTheme.colors,
     background: COLORS.background,
+    card: COLORS.background,
   }
 }
 
