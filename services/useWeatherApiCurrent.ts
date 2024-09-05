@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
-import {CurrentWeatherType} from "../src/utils/types";
+import {ApiError, CurrentWeatherType} from "../src/utils/types";
 
 export const useWeatherApiCurrent = (location: string) => {
-  const [current, setCurrent] = useState<CurrentWeatherType | null>(null);
+  const [current, setCurrent] = useState<CurrentWeatherType | null | ApiError >(null);
 
   useEffect(() => {
     fetch(`${process.env.EXPO_PUBLIC_API_URL}/current.json?key=${process.env.EXPO_PUBLIC_KEY}&q=${location}&lang=PL`)

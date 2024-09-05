@@ -12,7 +12,9 @@ export const Dashboard = () => {
   const current = useWeatherApiCurrent(location);
   const forecast = useWeatherApiForecast(location);
 
-  if(!current || !forecast) return <ActivityIndicator color={COLORS.sun} size="large" style={{height: '100%'}}/>
+  if(!current || !forecast || 'error' in current || 'error' in forecast) return (
+    <ActivityIndicator color={COLORS.sun} size="large" style={{height: '100%'}}/>
+  )
 
   return (
     <ScrollView>
