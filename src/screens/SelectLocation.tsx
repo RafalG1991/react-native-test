@@ -3,17 +3,30 @@ import {useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../navigation/Root";
 import {COLORS} from "../themes/colors";
+import {useState} from "react";
 
 export const SelectLocation = () => {
   const { navigate } = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const [value, setValue] = useState('');
+  const [list, setList] = useState<string[]>([]);
+
   return (
     <View style={styles.container}>
       <TextInput
         placeholder={"Wpisz lokalizację"}
         placeholderTextColor={COLORS.text}
         selectionColor={COLORS.text}
-        style={styles.input}/>
-      <TouchableOpacity style={styles.button}>
+        style={styles.input}
+        onChangeText={setValue}
+        value={value}
+      />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          setList(prevState => [...prevState, value]);
+          setValue('');
+        }}
+      >
         <Text style={styles.buttonText}>Dodaj</Text>
       </TouchableOpacity>
     </View>
