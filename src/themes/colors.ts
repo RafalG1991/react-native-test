@@ -4,4 +4,5 @@ export const COLORS = {
   text: 'white',
   lightBlue: "#34bffa",
   link: "#4550E6",
+  error: "#ff7b7b",
 }

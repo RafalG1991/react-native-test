@@ -5,6 +5,7 @@ import {RootStackParamList} from "../navigation/Root";
 import {COLORS} from "../themes/colors";
 import {SearchingInput} from "../components/SearchingInput";
 import {useLocationList} from "../../services/useLocationList";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export const SelectLocation = () => {
   const { navigate } = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -22,6 +23,7 @@ export const SelectLocation = () => {
           onPress={() => navigate('Dashboard', {location: item.value})}
         >
           <Text style={styles.itemText}>{item.title}</Text>
+          <Ionicons name="trash-outline" size={24} color={COLORS.error} />
         </TouchableOpacity>
       )}
     />
@@ -41,6 +43,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     padding: 20,
     borderRadius: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   itemText: {
     color: COLORS.text,
