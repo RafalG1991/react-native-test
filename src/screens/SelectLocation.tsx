@@ -1,23 +1,18 @@
-import {View, TextInput, StyleSheet, TouchableOpacity, Text, FlatList} from "react-native";
+import {StyleSheet, TouchableOpacity, Text, FlatList} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../navigation/Root";
 import {COLORS} from "../themes/colors";
-import {useState} from "react";
 import {SearchingInput} from "../components/SearchingInput";
-
-interface ListItem {
-  title: string,
-  value: string,
-}
+import {useLocationList} from "../../services/useLocationList";
 
 export const SelectLocation = () => {
   const { navigate } = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const [list, setList] = useState<ListItem[]>([]);
+  const {list, addToList} = useLocationList();
 
   return (
     <FlatList
-      ListHeaderComponent={<SearchingInput onSearch={(value) => setList(prevState => [...prevState, {title: value, value}])}/>}
+      ListHeaderComponent={<SearchingInput onSearch={(value) => addToList({value, title: value})}/>}
       ListHeaderComponentStyle={styles.header}
       contentContainerStyle={styles.container}
       data={list}
