@@ -3,10 +3,14 @@ import {COLORS} from "../themes/colors";
 import {FollowingDays} from "../components/FollowingDays";
 import {useWeatherApiCurrent} from "../../services/useWeatherApiCurrent";
 import {useWeatherApiForecast} from "../../services/useWeatherApiForecast";
+import {RouteProp, useRoute} from "@react-navigation/native";
+import {RootStackParamList} from "../navigation/Root";
 
 export const Dashboard = () => {
-  const current = useWeatherApiCurrent();
-  const forecast = useWeatherApiForecast();
+  const {params: {location}} = useRoute<RouteProp<RootStackParamList, 'Dashboard'>>();
+
+  const current = useWeatherApiCurrent(location);
+  const forecast = useWeatherApiForecast(location);
 
   if(!current || !forecast) return <ActivityIndicator color={COLORS.sun} size="large" style={{height: '100%'}}/>
 
