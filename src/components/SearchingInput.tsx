@@ -2,8 +2,17 @@ import {StyleSheet, Text, TextInput, TouchableOpacity} from "react-native";
 import {COLORS} from "../themes/colors";
 import {useState} from "react";
 
-export const SearchingInput = () => {
+interface SearchingInputProp {
+  onSearch: (value: string) => void;
+}
+
+export const SearchingInput = ({onSearch}: SearchingInputProp) => {
   const [value, setValue] = useState('');
+
+  const onSearchPress = () => {
+    onSearch(value);
+    setValue('');
+  };
 
   return (
     <>
@@ -17,10 +26,7 @@ export const SearchingInput = () => {
       />
       <TouchableOpacity
       style={styles.button}
-      onPress={() => {
-        // setList(prevState => [...prevState, {title: value, value: value}]);
-        setValue('');
-      }}>
+      onPress={onSearchPress}>
         <Text style={styles.buttonText}>Dodaj</Text>
       </TouchableOpacity>
   </>
