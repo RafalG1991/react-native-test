@@ -8,7 +8,9 @@ import {SelectLocation} from "../screens/SelectLocation";
 const Stack = createNativeStackNavigator();
 
 export type RootStackParamList = {
-  Dashboard: undefined;
+  Dashboard: {
+    location: string,
+  };
   DayDetails: {
     forecast: FollowingWeatherType,
   };
