@@ -8,7 +8,11 @@ export const SelectLocation = () => {
   const { navigate } = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input}/>
+      <TextInput
+        placeholder={"Wpisz lokalizację"}
+        placeholderTextColor={COLORS.text}
+        selectionColor={COLORS.text}
+        style={styles.input}/>
     </View>
   )
 }
