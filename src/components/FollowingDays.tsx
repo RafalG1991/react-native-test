@@ -10,7 +10,7 @@ type Props = {
   isLast: boolean,
 }
 
-const DAYS_OF_WEEK = ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"];
+const DAYS_OF_WEEK = ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"];
 
 export const FollowingDays = ({item, isLast}: Props) => {
   const {navigate} = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -18,7 +18,10 @@ export const FollowingDays = ({item, isLast}: Props) => {
   return (
     <TouchableOpacity onPress={() => navigate("DayDetails", {forecast: item})}>
       <View style={[styles.container, !isLast && styles.separator]}>
-        <Text style={styles.content}>{DAYS_OF_WEEK[new Date(item.date).getDay()]}</Text>
+        <Text style={styles.content}>{new Date().getDay() === new Date(item.date).getDay()
+          ? 'Dzisiaj'
+          : DAYS_OF_WEEK[new Date(item.date).getDay()]}
+        </Text>
         <Text style={[styles.content, styles.value]}>{item.day.avgtemp_c}</Text>
         <Image
           style={styles.weatherIcon}
