@@ -17,7 +17,9 @@ export const SelectLocation = () => {
 
   return (
     <FlatList
-      ListHeaderComponent={<SearchingInput />}
+      ListHeaderComponent={<SearchingInput onSearch={(value) => setList(prevState => [...prevState, {title: value, value}])}/>}
+      ListHeaderComponentStyle={styles.header}
+      contentContainerStyle={styles.container}
       data={list}
       renderItem={({item}) => (
         <View style={styles.item}>
@@ -25,27 +27,15 @@ export const SelectLocation = () => {
         </View>
       )}
     />
-    // <View style={styles.container}>
-
-
-    //   <View style={styles.listContainer}>
-    //   {list.map(item => (
-    //     <View style={styles.item}>
-    //       <Text style={styles.itemText}>{item.title}</Text>
-    //     </View>
-    //   ))}
-    //   </View>
-    // </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
+    margin: 20,
   },
-  listContainer: {
-    width: "100%",
-    marginTop: 40,
+  header: {
+    marginBottom: 40,
   },
   item: {
     width: "100%",
