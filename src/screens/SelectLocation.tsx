@@ -1,4 +1,4 @@
-import {View, TextInput, StyleSheet} from "react-native";
+import {View, TextInput, StyleSheet, TouchableOpacity, Text} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../navigation/Root";
@@ -13,6 +13,9 @@ export const SelectLocation = () => {
         placeholderTextColor={COLORS.text}
         selectionColor={COLORS.text}
         style={styles.input}/>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Dodaj</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -30,5 +33,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: COLORS.text,
     borderRadius: 10,
+  },
+  button: {
+    width: "100%",
+    backgroundColor: COLORS.link,
+    marginTop: 20,
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    color: COLORS.text,
+    fontSize: 16,
   },
 });
