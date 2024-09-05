@@ -5,10 +5,15 @@ import {RootStackParamList} from "../navigation/Root";
 import {COLORS} from "../themes/colors";
 import {useState} from "react";
 
+interface ListItem {
+  title: string,
+  value: string,
+}
+
 export const SelectLocation = () => {
   const { navigate } = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [value, setValue] = useState('');
-  const [list, setList] = useState<string[]>([]);
+  const [list, setList] = useState<ListItem[]>([]);
 
   return (
     <View style={styles.container}>
@@ -23,7 +28,7 @@ export const SelectLocation = () => {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          setList(prevState => [...prevState, value]);
+          setList(prevState => [...prevState, {title: value, value: value}]);
           setValue('');
         }}
       >
