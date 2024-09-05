@@ -34,6 +34,13 @@ export const SelectLocation = () => {
       >
         <Text style={styles.buttonText}>Dodaj</Text>
       </TouchableOpacity>
+      <View style={styles.listContainer}>
+      {list.map(item => (
+        <View style={styles.item}>
+          <Text style={styles.itemText}>{item.title}</Text>
+        </View>
+      ))}
+      </View>
     </View>
   )
 }
@@ -62,6 +69,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonText: {
+    color: COLORS.text,
+    fontSize: 16,
+  },
+  listContainer: {
+    width: "100%",
+    marginTop: 40,
+  },
+  item: {
+    width: "100%",
+    backgroundColor: COLORS.lightBlue,
+    marginBottom: 10,
+    padding: 20,
+    borderRadius: 10,
+  },
+  itemText: {
     color: COLORS.text,
     fontSize: 16,
   },
