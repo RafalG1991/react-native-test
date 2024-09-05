@@ -7,16 +7,24 @@ import {COLORS} from "../themes/colors";
 export const SelectLocation = () => {
   const { navigate } = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput style={styles.input}/>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    margin: 10,
+  },
   input: {
     width: "100%",
-    height: 50,
-    backgroundColor: COLORS.lightBlue,
+    borderWidth: 1,
+    backgroundColor: COLORS.link,
+    padding: 15,
+    paddingHorizontal: 20,
+    fontSize: 16,
+    color: COLORS.text,
+    borderRadius: 10,
   },
 });
