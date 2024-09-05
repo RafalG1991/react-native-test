@@ -22,9 +22,12 @@ export const SelectLocation = () => {
       contentContainerStyle={styles.container}
       data={list}
       renderItem={({item}) => (
-        <View style={styles.item}>
+        <TouchableOpacity
+          style={styles.item}
+          onPress={() => navigate('Dashboard', {location: item.value})}
+        >
           <Text style={styles.itemText}>{item.title}</Text>
-        </View>
+        </TouchableOpacity>
       )}
     />
   )
