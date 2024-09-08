@@ -6,6 +6,7 @@ import {COLORS} from "../themes/colors";
 import {SearchingInput} from "../components/SearchingInput";
 import {useLocationList} from "../../services/useLocationList";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import {SelectLocationByCoordinates} from "../components/SelectLocationByCoordinates";
 
 export const SelectLocation = () => {
   const { navigate } = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -16,9 +17,7 @@ export const SelectLocation = () => {
       ListHeaderComponent={
         <View>
           <SearchingInput onSearch={(value) => addToList({value, title: value})}/>
-          <TouchableOpacity>
-            <Ionicons name="locate" size={24} color="black" />
-          </TouchableOpacity>
+          <SelectLocationByCoordinates />
         </View>
       }
       ListHeaderComponentStyle={styles.header}
