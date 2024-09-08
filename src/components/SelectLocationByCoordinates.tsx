@@ -19,14 +19,22 @@ export const SelectLocationByCoordinates = ({onLocationFound}: SelectLocationByC
     }
 
     if (status === location.PermissionStatus.GRANTED) {
-      const loc = await location.getCurrentPositionAsync();
-      const res = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/current.json?key=${process.env.EXPO_PUBLIC_KEY}&q=${loc.coords.latitude},${loc.coords.longitude}&lang=PL`);
-      const cityData: CurrentWeatherType | ApiError  = await res.json();
-      console.log(cityData);
-      onLocationFound({
-        value: `${loc.coords.latitude},${loc.coords.longitude}`,
-        title: 'location' in cityData ? cityData.location.name : `${loc.coords.latitude},${loc.coords.longitude}`,
-      })
+      try {
+        const loc = await location.getCurrentPositionAsync();
+        const res = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/current.json?key=${process.env.EXPO_PUBLIC_KEY}&q=${loc.coords.latitude},${loc.coords.longitude}&lang=PL`);
+        const cityData: CurrentWeatherType | ApiError  = await res.json();
+        console.log(cityData);
+        onLocationFound({
+          value: `${loc.coords.latitude},${loc.coords.longitude}`,
+          title: 'location' in cityData ? cityData.location.name : `${loc.coords.latitude},${loc.coords.longitude}`,
+        });
+      } catch (error: any) {
+        if(error.code === 'E_LOCATION_UNAVAILABLE') {
+          Alert.alert('Błąd pobierania lokalizacji!', 'Brak uprawnień do pobrania lokalizacji! Sprawdź ustawienia!');
+        } else {
+          Alert.alert('Błąd!', 'Lokalizacja nie została pobrana!');
+        }
+      }
     }
 
   }
