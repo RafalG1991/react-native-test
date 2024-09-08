@@ -1,6 +1,7 @@
 import {StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {COLORS} from "../themes/colors";
 import {useState} from "react";
+import {SelectLocationByCoordinates} from "./SelectLocationByCoordinates";
 
 interface SearchingInputProp {
   onSearch: (value: string) => void;
@@ -16,14 +17,17 @@ export const SearchingInput = ({onSearch}: SearchingInputProp) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        placeholder={"Wpisz lokalizację"}
-        placeholderTextColor={COLORS.text}
-        selectionColor={COLORS.text}
-        style={styles.input}
-        onChangeText={setValue}
-        value={value}
-      />
+      <View style={{flexDirection: "row"}}>
+        <TextInput
+          placeholder={"Wpisz lokalizację"}
+          placeholderTextColor={COLORS.text}
+          selectionColor={COLORS.text}
+          style={styles.input}
+          onChangeText={setValue}
+          value={value}
+        />
+        <SelectLocationByCoordinates />
+      </View>
       <TouchableOpacity
       style={styles.button}
       onPress={onSearchPress}>
