@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TextInput, TouchableOpacity} from "react-native";
+import {StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {COLORS} from "../themes/colors";
 import {useState} from "react";
 
@@ -15,7 +15,7 @@ export const SearchingInput = ({onSearch}: SearchingInputProp) => {
   };
 
   return (
-    <>
+    <View style={styles.container}>
       <TextInput
         placeholder={"Wpisz lokalizację"}
         placeholderTextColor={COLORS.text}
@@ -29,11 +29,14 @@ export const SearchingInput = ({onSearch}: SearchingInputProp) => {
       onPress={onSearchPress}>
         <Text style={styles.buttonText}>Dodaj</Text>
       </TouchableOpacity>
-  </>
+  </View>
   )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   input: {
     width: "100%",
     borderWidth: 1,

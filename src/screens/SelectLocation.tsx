@@ -15,7 +15,7 @@ export const SelectLocation = () => {
   return (
     <FlatList
       ListHeaderComponent={
-        <View>
+        <View style={{flexDirection: "row"}}>
           <SearchingInput onSearch={(value) => addToList({value, title: value})}/>
           <SelectLocationByCoordinates />
         </View>
