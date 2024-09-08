@@ -1,4 +1,4 @@
-import {StyleSheet, TouchableOpacity, Text, FlatList} from "react-native";
+import {StyleSheet, TouchableOpacity, Text, FlatList, View} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../navigation/Root";
@@ -13,7 +13,14 @@ export const SelectLocation = () => {
 
   return (
     <FlatList
-      ListHeaderComponent={<SearchingInput onSearch={(value) => addToList({value, title: value})}/>}
+      ListHeaderComponent={
+        <View>
+          <SearchingInput onSearch={(value) => addToList({value, title: value})}/>
+          <TouchableOpacity>
+            <Ionicons name="locate" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
+      }
       ListHeaderComponentStyle={styles.header}
       contentContainerStyle={styles.container}
       data={list}
