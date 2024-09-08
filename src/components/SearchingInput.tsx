@@ -1,13 +1,13 @@
 import {StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {COLORS} from "../themes/colors";
 import {useState} from "react";
-import {SelectLocationByCoordinates} from "./SelectLocationByCoordinates";
 
 interface SearchingInputProp {
   onSearch: (value: string) => void;
+  rightElement?: React.ReactNode;
 }
 
-export const SearchingInput = ({onSearch}: SearchingInputProp) => {
+export const SearchingInput = ({onSearch, rightElement}: SearchingInputProp) => {
   const [value, setValue] = useState('');
 
   const onSearchPress = () => {
@@ -26,7 +26,7 @@ export const SearchingInput = ({onSearch}: SearchingInputProp) => {
           onChangeText={setValue}
           value={value}
         />
-        <SelectLocationByCoordinates />
+        {rightElement}
       </View>
       <TouchableOpacity
       style={styles.button}
